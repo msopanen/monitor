@@ -1,0 +1,67 @@
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<!-- 	
+		########################################################################
+		####
+		####	Example of the Spring WEB application web.xml that loads root 
+		####	context and servlet level context for solving issue where Spring 
+		####	components and beans are instantiated twice. This can be noticed 
+		####	also so that post construct and pre-destroy annotated methods are 
+		####	executed multiple times.  
+		####
+		####	Spring components are by default instantiated as singleton way so 
+		####	any root context level component should appear only once.
+		#### 
+		####	(c)mikko.p.sopanen@gmail.com
+		#### 
+		########################################################################	
+	-->
+	
+	<display-name>Web MVC Application</display-name>
+
+	<!-- 	
+		########################################################################
+		####
+		####	Root context of the application where common services for  
+		####	controllers and servlets are loaded.
+		#### 
+		########################################################################	
+	-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/root-context.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	
+	<!-- 	
+		########################################################################
+		####
+		####	Servlet context of the application where servlet specific   
+		####	beans are loaded.
+		#### 
+		########################################################################	
+	-->
+	<servlet>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>

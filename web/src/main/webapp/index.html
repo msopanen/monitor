@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<body>
+		<div id="gauges"></div>
+		<script src="scripts/main.min.js"></script>
+		
+		<script>
+	
+			$.ajax({
+				  type: "POST",
+				  url: "rest/temperature/report",
+				  data: '{ "a": "John", "b": "2pm" }',
+				  dataType: 'json',
+				  contentType: 'application/json',
+				  success: function (data) {
+					  //alert(data.a + " " + data.b);
+				  }
+			});
+		
+		</script>
+	
+	
+	</body>
+	
+	
+</html>

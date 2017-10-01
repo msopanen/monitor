@@ -1,0 +1,29 @@
+{
+  "name": "monitor-widget",
+  "version": "0.0.1",
+  "description": "monitor widget",
+  "main": "app/scripts/main.js",
+  "scripts": {
+    "test": "gulp clean && gulp build"
+  },
+  "keywords": [
+    "monitor-widget"
+  ],
+  "author": "mikko.p.sopanen@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "amd-optimize": "^0.6.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-l10n": "^1.2.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-webserver": "^0.9.1"
+  },
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "justgage": "^1.2.2",
+    "raphael": "^2.2.0",
+    "requirejs": "^2.2.0"
+  }
+}
